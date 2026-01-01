@@ -16,8 +16,8 @@ jobs:
           submodules: recursive
       - name: Build
         run: |
-          cmake -B bin -DCMAKE_BUILD_TYPE=Release .
-          cmake --build bin --parallel 4
+          cmake -B bin -DCMAKE_BUILD_TYPE=Release -G Ninja .
+          cmake --build bin
       - name: Publish artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -38,7 +38,7 @@ jobs:
           submodules: recursive
       - name: Build
         run: |
-          cmake -B bin -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=C:\vcpkg\scripts\buildsystems\vcpkg.cmake -DVCPKG_TARGET_TRIPLET=x64-windows -A x64 .
+          cmake -B bin -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=C:\vcpkg\scripts\buildsystems\vcpkg.cmake -DVCPKG_TARGET_TRIPLET=x64-windows -A x64 -G Ninja .
           cmake --build bin --config Release --parallel 4
           cp LICENSE LICENSE.txt
           cp bin\Release\OpenNFS.exe bin\
@@ -62,8 +62,8 @@ jobs:
           submodules: recursive
       - name: Build
         run: |
-          cmake -B bin -DCMAKE_BUILD_TYPE=Release .
-          cmake --build bin --config Release --parallel 3
+          cmake -B bin -DCMAKE_BUILD_TYPE=Release -G Ninja .
+          cmake --build bin --config Release
       - name: Publish artifacts
         uses: actions/upload-artifact@v4
         with:
