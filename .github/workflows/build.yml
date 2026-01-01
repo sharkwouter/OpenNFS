@@ -38,8 +38,8 @@ jobs:
           submodules: recursive
       - name: Build
         run: |
-          cmake -B bin -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=C:\vcpkg\scripts\buildsystems\vcpkg.cmake -DVCPKG_TARGET_TRIPLET=x64-windows -A x64 -G Ninja .
-          cmake --build bin --config Release --parallel 4
+          cmake -B bin -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=C:\vcpkg\scripts\buildsystems\vcpkg.cmake -DVCPKG_TARGET_TRIPLET=x64-windows -G Ninja .
+          cmake --build bin --config Release
           cp LICENSE LICENSE.txt
           cp bin\Release\OpenNFS.exe bin\
       - name: Publish artifacts
